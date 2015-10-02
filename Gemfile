@@ -27,6 +27,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # rspec for BDD/TDD
 gem 'rspec-rails', '~> 3.3.0'
+# Use guard for automated testing
+gem 'guard-rspec'
+# Automatically reload browser when view files are modified
+gem 'guard-livereload'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
