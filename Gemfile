@@ -50,4 +50,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Use faker for data population
   gem 'faker'
+  # Use database_cleaner in place of transactional fixtures
+  gem 'database_cleaner'
 end
