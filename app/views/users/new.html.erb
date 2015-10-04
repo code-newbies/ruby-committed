@@ -1,0 +1,14 @@
+Sign Up!
+
+<%= form_for @user, url: signup_path do |f| %>
+  <%= f.label :email, "Email" %>
+  <%= f.email_field :email %>
+  <br>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.label :password_confirmation, "Confirm Password" %>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <%= f.submit %>
+<% end %>
