@@ -10,6 +10,12 @@ $ bundle install
 $ cp ./config/database.yml.sample ./config/database.yml
 $ cp ./config/secrets.yml.sample ./config/secrets.yml
 
+To change the default secret keys, run the command below, copy the generated
+key and modify the secrets.yml file. You'll need to do this twice. Once for
+the test key and once for the developement key.
+
+$ rake secret
+
 _If you *do not* want to use the project default database names, then you'll want to edit
 config/database.yml before runnig the last command._
 
