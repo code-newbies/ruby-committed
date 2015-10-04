@@ -47,5 +47,6 @@ group :development, :test do
   # Use rpsec and Factory Girl for tests
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rspec-pride'
 end
 
