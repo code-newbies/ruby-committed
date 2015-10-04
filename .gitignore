@@ -12,5 +12,12 @@
 !/log/.keep
 /tmp
 
-config/database.yml
-config/secrets.yml
+# Ignore locally setup files
+/config/database.yml
+/config/secrets.yml
+
+# Ignore local files not needed in repo
+*.swp
+.DS_Store
+.rvmrc
+.ruby-version
