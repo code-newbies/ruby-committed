@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20151004184620) do
     t.string   "email",                null: false
     t.string   "password_digest",      null: false
     t.string   "verification_token"
+    t.datetime "verified_at"
+    t.string   "password_reset_token"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "password_reset_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
