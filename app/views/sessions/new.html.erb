@@ -1,0 +1,14 @@
+Sign In
+
+<%= form_tag do %>
+  <%= label_tag :email, "Email" %>
+  <%= email_field_tag :email %>
+  <br>
+  <%= label_tag :password, "Password" %>
+  <%= password_field_tag :password %>
+  <br>
+  <%= submit_tag "Sign In" %>
+<% end %>
+<br>
+<br>
+<%= link_to "Forgot Password", reset_password_path %>

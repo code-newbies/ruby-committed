@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
 
-  get  "signup" => "users#new", as: :signup
-  post "signup" => "users#create"
+  get    "signup"                     => "users#new",            as: :signup
+  post   "signup"                     => "users#create"
+  get    "signin"                     => "sessions#new",         as: :signin
+  post   "signin"                     => "sessions#create"
+  delete "signout"                    => "sessions#destroy"
+  get    "verify/:user_id"            => "verifications#new",    as: :verify
+  get    "verify/confirm/:token"      => "verifications#create", as: :confirm
+  get    "reset_password"             => "password_resets#new",  as: :reset_password
+  post   "reset_password"             => "password_resets#create"
+  get    "reset_password/:token/edit" => "password_resets#edit", as: :edit_reset_password
+  post   "reset_password/:token/edit" => "password_resets#update"
+  get    "dashboard"                  => "dashboards#new",        as: :dashboard
 
 
 
