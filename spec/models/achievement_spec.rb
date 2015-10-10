@@ -2,42 +2,36 @@ require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
 
-  it { should respond_to(:id) }
-  it { should respond_to(:title) }
-  it { should respond_to(:description) }
-  it { should respond_to(:created_at) }
-  it { should respond_to(:updated_at) }
+  let(:achievement) { build(:achievement) }
 
   describe "validation" do
 
-    let(:achievement) { build(:achievement) }
-
-    it "accepts valid attributes" do
+    it "has a valid factory" do
       expect(achievement).to be_valid
     end
 
-    it "rejects blank title" do
-      achievement.title = "    "
-      expect(achievement).to_not be_valid
+    it "is invalid without a title" do
+      achievement.title = nil 
+      expect(achievement).to be_invalid
     end
 
-    it "rejects blank description" do
-      achievement.description = "    "
-      expect(achievement).to_not be_valid
+    it "is invalid without a description" do
+      achievement.description = nil 
+      expect(achievement).to be_invalid
     end
 
-    it "rejects duplicate title" do
+    it "is invalid if title already exists" do
       achievement.save
       duplicate_achievement = build(:achievement)
       duplicate_achievement.title = achievement.title
-      expect(duplicate_achievement).to_not be_valid
+      expect(duplicate_achievement).to be_invalid
     end
 
-    it "rejects duplicate description" do
+    it "is invalid if description already exists" do
       achievement.save
       duplicate_achievement = build(:achievement)
       duplicate_achievement.description = achievement.description
-      expect(duplicate_achievement).to_not be_valid
+      expect(duplicate_achievement).to be_invalid
     end
   end
 end
