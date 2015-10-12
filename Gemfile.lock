@@ -54,6 +54,7 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    httparty (~> 0.13.7)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -142,6 +143,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  httparty (~> 0.13.7)
   jbuilder (~> 2.0)
   jquery-rails
   pg
