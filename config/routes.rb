@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+
   devise_for :users
+  authenticated :user do
+    root "users#show", as: :authenticated_root
+  end
+
+  resources :users, only: [:show, :edit, :update]
+  #get 'users/show'
+  #get 'users/edit'
+  #get 'users/update'
+
   root 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
