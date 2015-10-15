@@ -55,4 +55,6 @@ group :development, :test do
   gem 'faker'
   # Use database_cleaner in place of transactional fixtures
   gem 'database_cleaner'
+  # Use pry-rails for debugging
+  gem 'pry-rails', '~> 0.3.4'
 end
