@@ -80,4 +80,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # include Devise test helpers
+  config.include Devise::TestHelpers, type: :controller
 end
