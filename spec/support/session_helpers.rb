@@ -15,7 +15,7 @@ module SessionHelpers
     click_on "Log in"
   end
 
-  def signout(user)
+  def signout
     click_on "Sign Out"
   end
 end

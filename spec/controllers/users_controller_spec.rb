@@ -16,10 +16,4 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template(:show)
     end
   end
-
-  describe "GET #edit" do
-  end
-
-  describe "GET #update" do
-  end
 end

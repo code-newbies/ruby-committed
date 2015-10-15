@@ -67,7 +67,7 @@ RSpec.describe "user signin/signout" do
     it "signed in user can sign out" do
       signin(user)
       expect(current_path).to eq(authenticated_root_path)
-      signout(user)
+      signout
       expect(current_path).to eq(root_path)
     end
   end
