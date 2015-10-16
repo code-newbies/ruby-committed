@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     root "users#show", as: :authenticated_root
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show]
   #get 'users/show'
   #get 'users/edit'
   #get 'users/update'
