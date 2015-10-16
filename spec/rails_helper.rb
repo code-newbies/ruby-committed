@@ -7,6 +7,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 
+require "support/session_helpers"
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -80,4 +82,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # include Devise test helpers
+  config.include Devise::TestHelpers, type: :controller
+
+  # include our SessionHelpers to signup/login/logout
+  config.include SessionHelpers, type: :feature
 end

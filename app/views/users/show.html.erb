@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 id="username"><%= @user.username %>'s Profile</h1>
+    <p id="email">Email: <%= @user.email %></p>
+    <p id="biography">Auto-Biography: <%= @user.biography %></p>
+  </div>
+</div>
+
+</br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to "Edit Profile", edit_user_registration_path(@user), id: "edit_user_link" %>
+  </div>
+</div>
