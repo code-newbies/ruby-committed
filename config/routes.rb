@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, skip: :registrations
+  devise_for :users, skip: :registrations,
+    controllers: { omniauth_callbacks: "omniauth_callbacks" }
   devise_scope :user do
     resource :registration,
       only: [:new, :create, :edit, :update],

@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Devise gem for authentication
 gem 'devise', '~> 3.5.2'
+# omniauth-github gem for social signin
+gem 'omniauth-github', '~> 1.1.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
