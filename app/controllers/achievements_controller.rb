@@ -25,7 +25,7 @@ class AchievementsController < ApplicationController
   end
 
   def update
-    if @achievement.update_attributes(achievement_params)
+    if @achievement.update(achievement_params)
       redirect_to @achievement
     else
       render 'edit'
@@ -34,7 +34,7 @@ class AchievementsController < ApplicationController
 
   def destroy
     @achievement.destroy
-    redirect_to root_path
+    redirect_to achievements_path
   end
 
   private
@@ -44,6 +44,6 @@ class AchievementsController < ApplicationController
     end
 
     def achievement_params
-      params.require(:achievement).permit(:title, :description, :point)
+      params.require(:achievement).permit(:title, :description, :points)
     end
 end
