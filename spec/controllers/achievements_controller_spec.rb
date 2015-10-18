@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe AchievementsController, type: :controller do
 
+  before(:example) do
+    @user = create(:user)
+    sign_in(@user)
+  end
+
   let(:achievement) { create(:achievement) }
 
   describe "GET #new" do
