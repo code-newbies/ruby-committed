@@ -59,8 +59,8 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false 
-  
+  config.use_transactional_fixtures = false
+
   # Use database_cleaner in place of transactional fixtures
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -87,4 +87,8 @@ RSpec.configure do |config|
 
   # include our SessionHelpers to signup/login/logout
   config.include SessionHelpers, type: :feature
+  config.include SessionHelpers, type: :controller
+
+  # turn on test mode for omniauth
+  OmniAuth.config.test_mode = true
 end

@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:github]
   has_many :identities
   validates :username, presence: true
+
+  def self.create_from_oauth(auth)
+    create(username: auth.info.nickname,
+           email: auth.info.email,
+           password: Devise.friendly_token[0, 20])
+  end
 end

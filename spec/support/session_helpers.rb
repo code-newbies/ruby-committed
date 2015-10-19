@@ -18,4 +18,21 @@ module SessionHelpers
   def signout
     click_on "Sign Out"
   end
+
+  def github_social_signin
+    visit root_path
+    click_on "Sign In"
+    click_on "Sign in with Github"
+  end
+
+  def mock_provider_auth_hash(provider)
+    OmniAuth.config.mock_auth[provider.to_sym] = OmniAuth::AuthHash.new({
+      provider: provider.to_sym,
+      uid: "12345",
+      info: {
+        nickname: "moeabdol",
+        email: "moeabdol@committed.com",
+      }
+    })
+  end
 end

@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Identity, type: :model do
   context "validations" do
-    it "belongs to a user" do
-      identity = build(:identity, user: nil)
-      expect(identity).not_to be_valid
-    end
-
     it "has a uid" do
       identity = build(:identity, uid: nil)
       expect(identity).not_to be_valid
@@ -33,8 +28,9 @@ RSpec.describe Identity, type: :model do
       end
 
       it "different identities can have same provider with different uids" do
-        create(:identity, provider: "github", uid: "123")
-        identity = build(:identity, provider: "github", uid: "456")
+        create(:identity, user: user, provider: "github", uid: "123")
+        identity = build(:identity, user: create(:user), provider: "github",
+                                                         uid: "456")
         expect(identity).to be_valid
       end
 
@@ -43,6 +39,36 @@ RSpec.describe Identity, type: :model do
         identity = build(:identity, provider: "twitter", uid: "123")
         expect(identity).to be_valid
       end
+    end
+  end
+
+  context "omniauth" do
+    before(:example) do
+      @auth = OmniAuth::AuthHash.new({
+        provider: :github,
+        uid: "12345",
+        info: {
+          nickname: "moeabdol",
+          email: "moeabdol@committed.com",
+        }
+      })
+    end
+
+    it "creates a new social identity if identity is not found" do
+      expect(Identity.count).to eq(0)
+      identity = Identity.find_or_create_from_oauth(@auth)
+      expect(Identity.count).to eq(1)
+      expect(identity.provider).to eq("github")
+      expect(identity.uid).to eq("12345")
+    end
+
+    it "finds an already created social identity" do
+      create(:identity, provider: "github", uid: "12345")
+      expect(Identity.count).to eq(1)
+      identity = Identity.find_or_create_from_oauth(@auth)
+      expect(Identity.count).to eq(1)
+      expect(identity.provider).to eq("github")
+      expect(identity.uid).to eq("12345")
     end
   end
 end
