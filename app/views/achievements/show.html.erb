@@ -1,0 +1,12 @@
+<h1><%= @achievement.title %></h1>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= @achievement.description %></br>
+    <p><strong>Points: </strong><%= @achievement.points %></p>
+  </div>
+</div>
+
+<%= link_to "Back",   achievements_path, class: 'btn btn-primary' %>
+<%= link_to "Edit",   edit_achievement_path(@achievement), class: 'btn btn-primary' %>
+<%= link_to "Delete", achievement_path(@achievement), method: :delete, data: { confirm: "Delete this achievement?" }, class: 'btn btn-primary' %>
