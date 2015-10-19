@@ -67,14 +67,19 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
                            provider: request.env["omniauth.auth"].provider,
                            uid: request.env["omniauth.auth"].uid)
         @identity.user = @user
+        allow(Identity).to \
+          receive(:find_or_create_from_oauth).and_return(@identity)
       end
 
       it "assigns session" do
-        allow(Identity).to \
-          receive(:find_or_create_from_oauth).and_return(@identity)
         get :github
         expect(session["devise.github_data"]).to \
           eq(request.env["omniauth.auth"])
+      end
+
+      it "redirects to new_user_registration_url" do
+        get :github
+        expect(response).to redirect_to(new_user_registration_url)
       end
     end
   end
