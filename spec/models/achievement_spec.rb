@@ -36,4 +36,31 @@ RSpec.describe Achievement, type: :model do
       end
     end
   end
+
+  describe "associations" do
+
+    it "has many users" do
+      user1 = build(:user)
+      user2 = build(:user)
+      achievement.users << user1 << user2
+      expect(achievement.users.to_a.count).to eq 2
+    end
+
+    context "valid" do
+      it "adds users to achievement" do
+      user1 = build(:user)
+      user2 = build(:user)
+      achievement.users << user1 << user2
+      expect(achievement.save).to be true
+      end
+    end
+
+    context "invalid" do
+      it "does not add duplicate user to achievement" do
+        user = build(:user)
+        achievement.users << user << user
+        expect(achievement.save).to be false
+      end
+    end
+  end
 end

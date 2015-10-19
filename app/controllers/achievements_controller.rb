@@ -8,6 +8,7 @@ class AchievementsController < ApplicationController
   def create
     @achievement = Achievement.new(achievement_params)
     if @achievement.save
+      current_user.achievements << @achievement
       redirect_to @achievement
     else
       render 'new'
@@ -18,7 +19,7 @@ class AchievementsController < ApplicationController
   end
 
   def index
-    @achievements = Achievement.all
+    @achievements = current_user.achievements
   end
 
   def edit
