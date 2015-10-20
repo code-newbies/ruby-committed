@@ -24,10 +24,10 @@ $ rake db:setup
 To be able to use social login with Github, make sure to add your consumer key
 and consumer secret in your config/secrets.yml. For example:
 
-development:
+development:</br>
   github_consumer_key: 123456........</br>
   github_consumer_secret: 123456.........</br>
 
-test:
+test:</br>
   github_consumer_key: 123456........</br>
   github_consumer_secret: 123456.........</br>
